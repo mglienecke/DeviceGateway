@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CfgGatewayServiceUrl" xml:space="preserve">
+    <value>http://192.168.1.2/GatewayService</value>
+  </data>
+  <data name="ErrorFailedLoadingConfigFileFromRemovableMedia" xml:space="preserve">
+    <value>Failed loading device configuration from removable media.</value>
+  </data>
+  <data name="ErrorFailedRefsreshingDeviceRegistration" xml:space="preserve">
+    <value>Failed while refreshing device registration.</value>
+  </data>
+  <data name="ErrorFailedRefsreshingDeviceSensorsRegistration" xml:space="preserve">
+    <value>Failed while refreshing the device's sensors registration.</value>
+  </data>
+  <data name="ErrorFailedSendingSensorDataOverHttp" xml:space="preserve">
+    <value>Failed sending sensor data over HTTP. </value>
+  </data>
+  <data name="ErrorNoSensorConfigurationFound" xml:space="preserve">
+    <value>No sensor configuration found. Id: {0}</value>
+  </data>
+  <data name="ErrorPullModeNotSupported" xml:space="preserve">
+    <value>PULL sensor data retrieval mode is not supported.</value>
+  </data>
+  <data name="ErrorSensorNotFound" xml:space="preserve">
+    <value>Sensor is not found. Id: {0}</value>
+  </data>
+  <data name="ErrorSettingSensorValueNotSupported" xml:space="preserve">
+    <value>Setting the sensor's value is not supported. Id: {0}</value>
+  </data>
+  <data name="ErrorUnableRefreshDeviceRegistrationNoServerUrl" xml:space="preserve">
+    <value>Unable to refresh device registration. No ServerUrl specified in the device configuration.</value>
+  </data>
+  <data name="ErrorUnsupportedResponseContentType" xml:space="preserve">
+    <value>Unsupported response content type. Content type: {0}.</value>
+  </data>
+  <data name="ErrorValueNotProvidedInRequest" xml:space="preserve">
+    <value>Value is not provided in the request.</value>
+  </data>
+  <data name="ExceptionContentParserTypeNotFound" xml:space="preserve">
+    <value>Content parser type is not found. Type name: {0}.</value>
+  </data>
+  <data name="ExceptionContentTypeNotSupported" xml:space="preserve">
+    <value>This content type is not supported. Type: {0}</value>
+  </data>
+  <data name="ExceptionFailedParsingJsonOperationResult" xml:space="preserve">
+    <value>Failed parsing JSON OperationResult. Content: {0}.</value>
+  </data>
+  <data name="ExceptionMissingJSONDeviceConfigProperty" xml:space="preserve">
+    <value>Incomplete JSON DeviceConfig data. Missing property: {0}</value>
+  </data>
+  <data name="ExceptionMissingJSONSensorConfigProperty" xml:space="preserve">
+    <value>Incomplete JSON SensorConfig data. Missing property: {0}</value>
+  </data>
+  <data name="ExceptionTypeInstantiationFailed" xml:space="preserve">
+    <value>Type instantiation failed. Error: {0}.</value>
+  </data>
+  <data name="ExceptionTypeNotFound" xml:space="preserve">
+    <value>Type is not found. Name: {0}.</value>
+  </data>
+  <data name="HttpResponseStatus" xml:space="preserve">
+    <value> HTTP response status: {0}</value>
+  </data>
+  <data name="HttpResponseStatusWithMessage" xml:space="preserve">
+    <value> HTTP response status: {0}; Message: {1}</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="small" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\small.tinyfnt;System.Byte[], mscorlib, Version=4.1.2821.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="SocketStatusWithMessage" xml:space="preserve">
+    <value>Socket status: {0}; Message: {1}</value>
+  </data>
+  <data name="TextStart" xml:space="preserve">
+    <value>Hello World!</value>
+  </data>
+  <data name="ExceptionFailedSettingUpSensorPorts" xml:space="preserve">
+    <value>Failed setting up sensor ports.</value>
+  </data>
+  <data name="ExceptionServerCommTypeNotSupported" xml:space="preserve">
+    <value>Server communication type is not supported. Type: {0}.</value>
+  </data>
+  <data name="ErrorUnknownCndepCommand" xml:space="preserve">
+    <value>Unknown CNDEP command. Command: {0}.</value>
+  </data>
+  <data name="ErrorUnknownCndepCommandFunction" xml:space="preserve">
+    <value>Unknown CNDEP command function. Command: {0}; Function: {1}.</value>
+  </data>
+  <data name="CndepResponseStatusWithMessage" xml:space="preserve">
+    <value>CNDEP response: {0}; Error message: {1}</value>
+  </data>
+  <data name="ErrorFailedSendingSensorDataOverCndep" xml:space="preserve">
+    <value>Failed sending sensor data to the server over CNDEP.  </value>
+  </data>
+  <data name="ErrorNoSensorIdInRequest" xml:space="preserve">
+    <value>No sensor id in CDNDEP request. </value>
+  </data>
+  <data name="TextCndepRequestArrived" xml:space="preserve">
+    <value>CNDEP request. Command: {0}; Function: {1}; Content: {2}.</value>
+  </data>
+  <data name="CndepResponseId" xml:space="preserve">
+    <value>CNDEP response id: {0}</value>
+  </data>
+  <data name="ErrorFailedRegisteringDeviceOverCndep" xml:space="preserve">
+    <value>Failed registering device over CNDEP.</value>
+  </data>
+  <data name="ErrorFailedRegisteringSensorsOverCndep" xml:space="preserve">
+    <value>Failed registering sensors over CNDEP.</value>
+  </data>
+  <data name="ErrorMissingRequestContent" xml:space="preserve">
+    <value>Missing request content.</value>
+  </data>
+  <data name="NullResponse" xml:space="preserve">
+    <value>Null response.</value>
+  </data>
+</root>

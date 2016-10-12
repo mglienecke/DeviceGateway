@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CentralServerService.OData", "CentralServerService.OData.csproj", "{95025C81-3CE9-4EDB-A570-562C97D48870}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities.HttpRestClient", "..\Utilities.HttpRestClient\Utilities.HttpRestClient.csproj", "{EBD09C36-6745-4BC0-89FD-EC64B6DE4B4E}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 1
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://glienecke.visualstudio.com/defaultcollection
+		SccProjectUniqueName0 = CentralServerService.OData.csproj
+		SccProjectName0 = .
+		SccAuxPath0 = https://glienecke.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95025C81-3CE9-4EDB-A570-562C97D48870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95025C81-3CE9-4EDB-A570-562C97D48870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95025C81-3CE9-4EDB-A570-562C97D48870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95025C81-3CE9-4EDB-A570-562C97D48870}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBD09C36-6745-4BC0-89FD-EC64B6DE4B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBD09C36-6745-4BC0-89FD-EC64B6DE4B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBD09C36-6745-4BC0-89FD-EC64B6DE4B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBD09C36-6745-4BC0-89FD-EC64B6DE4B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

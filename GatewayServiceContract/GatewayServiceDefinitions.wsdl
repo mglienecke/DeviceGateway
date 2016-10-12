@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 2 (http://www.altova.com) by Michael Glienecke (C-Consult SIA) -->
+<!-- Mit XMLSpy v2011 sp1 (x64) (http://www.altova.com) von Michael Glienecke (C-Consult SIA) bearbeitet -->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://GatewayService" xmlns:ns="http://www.eeml.org/xsd/005" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://GatewayService">
+	<wsdl:import namespace="http://GatewayService" location="../GlobalDataContracts/DataTypeDefinitions.xsd"/>
+	<wsdl:types>
+		<xs:schema elementFormDefault="qualified" targetNamespace="http://GatewayService"/>
+	</wsdl:types>
+	<wsdl:message name="StoreSensorDataRequest">
+		<wsdl:part name="DeviceId" type="xs:string"/>
+		<wsdl:part name="Data" type="tns:MultipleSensorDataList"/>
+	</wsdl:message>
+	<wsdl:message name="GetDevicesRequest"/>
+	<wsdl:message name="GetDevicesResponse">
+		<wsdl:part name="Result" type="tns:GetDevicesResult"/>
+	</wsdl:message>
+	<wsdl:message name="RegisterDeviceRequest">
+		<wsdl:part name="Device" type="tns:Device"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateDeviceRequest">
+		<wsdl:part name="Device" type="tns:Device"/>
+	</wsdl:message>
+	<wsdl:message name="StatusMessage">
+		<wsdl:part name="parameter" type="xs:string"/>
+	</wsdl:message>
+	<wsdl:message name="GetSensorsRequest">
+		<wsdl:part name="DeviceId" type="xs:string"/>
+	</wsdl:message>
+	<wsdl:message name="GetSensorsResponse">
+		<wsdl:part name="Result" type="tns:GetSensorsForDeviceResult"/>
+	</wsdl:message>
+	<wsdl:message name="RegisterSensorRequest">
+		<wsdl:part name="Sensors" type="tns:SensorList"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateSensorRequest">
+		<wsdl:part name="Sensor" type="tns:Sensor"/>
+	</wsdl:message>
+	<wsdl:message name="IsDeviceIdUsedRequest">
+		<wsdl:part name="DeviceId" type="xs:string"/>
+	</wsdl:message>
+	<wsdl:message name="IsDeviceIdUsedResponse">
+		<wsdl:part name="Result" type="tns:IsDeviceIdUsedResult"/>
+	</wsdl:message>
+	<wsdl:message name="IsSensorIdRegisteredForDeviceRequest">
+		<wsdl:part name="DeviceId" type="xs:string"/>
+		<wsdl:part name="SensorId" type="xs:string"/>
+	</wsdl:message>
+	<wsdl:message name="IsSensorIdRegisteredForDeviceResponse">
+		<wsdl:part name="Result" type="tns:IsSensorIdRegisteredForDeviceResult"/>
+	</wsdl:message>
+	<wsdl:message name="GetSensorRequest">
+		<wsdl:part name="DeviceId" type="xs:string"/>
+		<wsdl:part name="SensorId" type="xs:string"/>
+	</wsdl:message>
+	<wsdl:message name="GetSensorResponse">
+		<wsdl:part name="Result" type="tns:GetSensorResult"/>
+	</wsdl:message>
+	<wsdl:message name="GetSensorDataRequest">
+		<wsdl:part name="DeviceId" type="xs:string"/>
+		<wsdl:part name="Sensors" type="tns:IdList"/>
+		<wsdl:part name="TakenFrom" type="xs:dateTime"/>
+		<wsdl:part name="TakenUntil" type="xs:dateTime"/>
+		<wsdl:part name="MaxValues" type="xs:int"/>
+	</wsdl:message>
+	<wsdl:message name="GetSensorDataResponse">
+		<wsdl:part name="Result" type="tns:GetMultipleSensorDataResult"/>
+	</wsdl:message>
+	<wsdl:message name="RegisterDeviceResponse">
+		<wsdl:part name="Result" type="tns:OperationResult"/>
+	</wsdl:message>
+	<wsdl:message name="StoreSensorDataResponse">
+		<wsdl:part name="Result" type="tns:OperationResult"/>
+	</wsdl:message>
+	<wsdl:message name="RegisterSensorResponse">
+		<wsdl:part name="Result" type="tns:OperationResult"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateDeviceResponse">
+		<wsdl:part name="Result" type="tns:OperationResult"/>
+	</wsdl:message>
+	<wsdl:message name="UpdateSensorResponse">
+		<wsdl:part name="Result" type="tns:OperationResult"/>
+	</wsdl:message>
+	<wsdl:portType name="IGatewayService">
+		<wsdl:operation name="StoreSensorData">
+			<wsdl:input message="tns:StoreSensorDataRequest"/>
+			<wsdl:output message="tns:StoreSensorDataResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="RegisterDevice">
+			<wsdl:input message="tns:RegisterDeviceRequest"/>
+			<wsdl:output message="tns:RegisterDeviceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateDevice">
+			<wsdl:input message="tns:UpdateDeviceRequest"/>
+			<wsdl:output message="tns:UpdateDeviceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="RegisterSensors">
+			<wsdl:input message="tns:RegisterSensorRequest"/>
+			<wsdl:output message="tns:RegisterSensorResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateSensor">
+			<wsdl:input message="tns:UpdateSensorRequest"/>
+			<wsdl:output message="tns:UpdateSensorResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetDevices">
+			<wsdl:input message="tns:GetDevicesRequest"/>
+			<wsdl:output message="tns:GetDevicesResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetSensorsForDevice">
+			<wsdl:input message="tns:GetSensorsRequest"/>
+			<wsdl:output message="tns:GetSensorsResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="IsDeviceIdUsed">
+			<wsdl:input message="tns:IsDeviceIdUsedRequest"/>
+			<wsdl:output message="tns:IsDeviceIdUsedResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="IsSensorIdRegisteredForDevice">
+			<wsdl:input message="tns:IsSensorIdRegisteredForDeviceRequest"/>
+			<wsdl:output message="tns:IsSensorIdRegisteredForDeviceResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetSensor">
+			<wsdl:input message="tns:GetSensorRequest"/>
+			<wsdl:output message="tns:GetSensorResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="GetSensorData">
+			<wsdl:input message="tns:GetSensorDataRequest"/>
+			<wsdl:output message="tns:GetSensorDataResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="GatewayServiceBinding" type="tns:IGatewayService">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="StoreSensorData">
+			<soap:operation soapAction="urn:#StoreSensorData" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://GatewayService"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://GatewayService"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RegisterDevice">
+			<soap:operation soapAction="urn:#RegisterDevice" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://GatewayService"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://GatewayService"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateDevice">
+			<soap:operation soapAction="urn:#UpdateDevice" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RegisterSensors">
+			<soap:operation soapAction="urn:#RegisterSensors" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateSensor">
+			<soap:operation soapAction="urn:#UpdateSensor" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetDevices">
+			<soap:operation soapAction="urn:#GetDevices" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSensorsForDevice">
+			<soap:operation soapAction="urn:#GetSensors" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="IsDeviceIdUsed">
+			<soap:operation soapAction="urn:#NewOperation" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="IsSensorIdRegisteredForDevice">
+			<soap:operation soapAction="urn:#NewOperation" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSensor">
+			<soap:operation soapAction="urn:#NewOperation" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSensorData">
+			<soap:operation soapAction="urn:#NewOperation" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="GatewayService">
+		<wsdl:port name="DataPort" binding="tns:GatewayServiceBinding">
+			<soap:address location="http://localhost/GatewayService"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

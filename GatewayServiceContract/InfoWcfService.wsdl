@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2010 rel. 2 (http://www.altova.com) by Michael (C-Consult SIA) -->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://namespaces.cconsult.lv" targetNamespace="http://namespaces.cconsult.lv">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://namespaces.cconsult.lv" targetNamespace="http://namespaces.cconsult.lv" elementFormDefault="qualified">
+			<complexType name="FindInfosAfterDateResult">
+				<sequence>
+					<element name="infoElements" type="tns:InfoWcfElements"/>
+					<element name="resultStatus" type="soapenc:int"/>
+					<element name="errorMessage" type="soapenc:string"/>
+				</sequence>
+			</complexType>
+			<complexType name="InfoWcfElement">
+				<sequence>
+					<element name="created" type="soapenc:dateTime"/>
+					<element name="application" type="soapenc:string"/>
+					<element name="info" type="soapenc:string"/>
+					<element name="level" type="soapenc:byte"/>
+				</sequence>
+			</complexType>
+			<complexType name="ArrayOfInfoWcfElements">
+				<complexContent>
+					<restriction base="soapenc:Array">
+						<attribute ref="soapenc:arrayType" wsdl:arrayType="tns:InfoWcfElement[]"/>
+					</restriction>
+				</complexContent>
+			</complexType>
+			<complexType name="InfoWcfElements">
+				<sequence>
+					<element name="Element" type="tns:InfoWcfElement" minOccurs="0" maxOccurs="unbounded"/>
+				</sequence>
+			</complexType>
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="FindInfosAfterDateRequest">
+		<wsdl:part name="afterDater" type="xs:dateTime"/>
+		<wsdl:part name="maxRows" type="xs:int"/>
+	</wsdl:message>
+	<wsdl:message name="FindInfosAfterDateResponse">
+		<wsdl:part name="result" type="tns:FindInfosAfterDateResult"/>
+	</wsdl:message>
+	<wsdl:portType name="IInfoWcfService">
+		<wsdl:operation name="FindInfosAfterDate">
+			<wsdl:input message="tns:FindInfosAfterDateRequest"/>
+			<wsdl:output message="tns:FindInfosAfterDateResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="FindInfosAfterDate_Local">
+			<wsdl:input message="tns:FindInfosAfterDateRequest"/>
+			<wsdl:output message="tns:FindInfosAfterDateResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="InfoWcfServiceBinding" type="tns:IInfoWcfService">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="FindInfosAfterDate">
+			<soap:operation soapAction="urn:#FindInfosAfterDate" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://namespaces.cconsult.lv"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://namespaces.cconsult.lv"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="FindInfosAfterDate_Local">
+			<soap:operation soapAction="urn:#FindInforsAfterDate_Local" style="rpc"/>
+			<wsdl:input>
+				<soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://namespaces.cconsult.lv"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://namespaces.cconsult.lv"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="InfoWcfService">
+		<wsdl:port name="InfoWcfServicePort" binding="tns:InfoWcfServiceBinding">
+			<soap:address location="http://localhost/InfoWcfService/InfoWcfService.svc"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

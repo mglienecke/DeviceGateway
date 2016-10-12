@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ErrorCallbackNameNotFound" xml:space="preserve">
+    <value>The callback named {0} could not be found in the list of callbacks</value>
+  </data>
+  <data name="ErrorCallbackTypeNotSupported" xml:space="preserve">
+    <value>The callback type {0} is not supported</value>
+  </data>
+  <data name="ErrorCallingPythonCallback" xml:space="preserve">
+    <value>When calling the callback {0} an error occured: {1}</value>
+  </data>
+  <data name="ErrorCallingRubyCallback" xml:space="preserve">
+    <value>When calling the callback {0} an error occured: {1}</value>
+  </data>
+  <data name="ErrorCallingScriptingCallback" xml:space="preserve">
+    <value>When calling the callback {0} an error occured: {1}</value>
+  </data>
+  <data name="ErrorCreatingPythonCallback" xml:space="preserve">
+    <value>Error creating Python callback</value>
+  </data>
+  <data name="ErrorCreatingRubyCallback" xml:space="preserve">
+    <value>Error creating Ruby callback</value>
+  </data>
+  <data name="ErrorCreatingScriptingCallback" xml:space="preserve">
+    <value>Error creating DLR scripting callback</value>
+  </data>
+  <data name="ErrorCSharpInteractiveCallbackIsNotCompiled" xml:space="preserve">
+    <value>C# interactive callback is not compiled, no module found.</value>
+  </data>
+  <data name="ErrorCSharpInteractiveCallbackMethodIsNotFound" xml:space="preserve">
+    <value>C# interactive callback method is not found. Method name: {0}.</value>
+  </data>
+  <data name="ErrorCSharpInteractiveCallbackTypeIsNotFound" xml:space="preserve">
+    <value>C# interactive callback type is not found. Type name: {0}.</value>
+  </data>
+  <data name="ErrorCyclicReference" xml:space="preserve">
+    <value>The reference is a cyclic reference and thus invalid. Base value definition internal id: {0}; dependent value definition internal id: {1}.</value>
+  </data>
+  <data name="ErrorExceptionOccured" xml:space="preserve">
+    <value>In method {0} an exception occured: {1}
+{2}
+{3}</value>
+  </data>
+  <data name="ErrorExecuteCallback" xml:space="preserve">
+    <value>Error executing callback</value>
+  </data>
+  <data name="ErrorInitMethodCallEnvironment" xml:space="preserve">
+    <value>Error initializing the method call environment</value>
+  </data>
+  <data name="ErrorInitScriptEnvironment" xml:space="preserve">
+    <value>Error initializing the scripting environment</value>
+  </data>
+  <data name="ErrorInterfaceNotImplemented" xml:space="preserve">
+    <value>The necessary interface {0} is not implemented by callback {1}</value>
+  </data>
+  <data name="ErrorInvalidCallbackType" xml:space="preserve">
+    <value>The callback type {0} is invalid</value>
+  </data>
+  <data name="ErrorInvalidCallbackTypeForVirtualValues" xml:space="preserve">
+    <value>Callback {0} doesn't have the proper type ({1}). CallbackType.VirtualValueCalculation is needed</value>
+  </data>
+  <data name="ErrorNoCompiledCode" xml:space="preserve">
+    <value>There is no compiled script code to execute</value>
+  </data>
+  <data name="ErrorNoDependencyToSelf" xml:space="preserve">
+    <value>You cannot create a dependency to the same node (self-dependency). Base value definition internal id: {0}; dependent value definition internal id: {0}.</value>
+  </data>
+  <data name="ErrorNoExecutionType" xml:space="preserve">
+    <value>An execution type (what to execute) must be defined</value>
+  </data>
+  <data name="ErrorNoProperStorageToWriteTo" xml:space="preserve">
+    <value>No proper storage to write to exists</value>
+  </data>
+  <data name="ErrorNoScriptRuntime" xml:space="preserve">
+    <value>No script runtime present</value>
+  </data>
+  <data name="ErrorNoScriptSource" xml:space="preserve">
+    <value>No script source present</value>
+  </data>
+  <data name="ErrorNoVirtualValueDefinition" xml:space="preserve">
+    <value>The value definition is no virtual value</value>
+  </data>
+  <data name="ErrorPythonCallbackIsNotDefined" xml:space="preserve">
+    <value>The Python callback: {0} is not defined or the proper parameters are not present</value>
+  </data>
+  <data name="ErrorRubyCallbackIsNotDefined" xml:space="preserve">
+    <value>The Ruby callback: {0} is not defined or the proper parameters are not present</value>
+  </data>
+  <data name="ErrorScriptingCallbackIsNotDefined" xml:space="preserve">
+    <value>The DLR scripting callback: {0} is not defined or the proper parameters are not present</value>
+  </data>
+  <data name="ErrorStartingWriteToStorageThread" xml:space="preserve">
+    <value>Error starting the write thread</value>
+  </data>
+  <data name="ErrorVirtualEvalCallbackKeyNotFound" xml:space="preserve">
+    <value>The key {0} for the callback to evaluate the virtual value could not be found</value>
+  </data>
+  <data name="ErrorWritingValues" xml:space="preserve">
+    <value>Error writing values to the storage</value>
+  </data>
+  <data name="InternalIdNotFound" xml:space="preserve">
+    <value>The internal id {0} is not existant in the dictionary</value>
+  </data>
+  <data name="InvalidExecutionTypeForScriptExecution" xml:space="preserve">
+    <value>For a script execution ({0}) is an invalid execution type </value>
+  </data>
+  <data name="NoExecutionDataAndFileName" xml:space="preserve">
+    <value>Either execution data (code) or an external filename must be specified</value>
+  </data>
+  <data name="NoSymbolicName" xml:space="preserve">
+    <value>A symbolic name for an execution unit must be defined</value>
+  </data>
+  <data name="NotSupportedYet" xml:space="preserve">
+    <value>This operation is not yet supported</value>
+  </data>
+  <data name="RubySupportNotImplementedYet" xml:space="preserve">
+    <value>The support for RUBY is not yet implemented</value>
+  </data>
+  <data name="SaveObjectsRemovedDueToRetry" xml:space="preserve">
+    <value>Due to the retry count exceeding the configured limit objects to be saved were deleted internally to maintain a stable system</value>
+  </data>
+  <data name="ScriptFileDoesNotExist" xml:space="preserve">
+    <value>Script File {0} does not exist</value>
+  </data>
+  <data name="ErrorCallingCSharpInteractiveCallback" xml:space="preserve">
+    <value>Error calling C# interactive callback. Method name: {0}; Error: {1}.</value>
+  </data>
+  <data name="ErrorCompileError" xml:space="preserve">
+    <value>Compile error: </value>
+  </data>
+  <data name="ErrorCallingSqlInteractiveCallback" xml:space="preserve">
+    <value>Error executing SQL interactive callback. Error: {0}</value>
+  </data>
+  <data name="ErrorInitCSharpInteractiveEnvironment" xml:space="preserve">
+    <value>Error initializing C# execution environment. Error: {0}</value>
+  </data>
+  <data name="ErrorInitSqlExecutionEnvironment" xml:space="preserve">
+    <value>Error initializing SQL execution environment. Error: {0}</value>
+  </data>
+  <data name="ErrorFSharpInteractiveCallbackIsNotCompiled" xml:space="preserve">
+    <value>F# interactive callback is not compiled, no module found.</value>
+  </data>
+  <data name="ErrorFSharpInteractiveCallbackMethodIsNotFound" xml:space="preserve">
+    <value>F# interactive callback method is not found. Method name: {0}.</value>
+  </data>
+  <data name="ErrorFSharpInteractiveCallbackTypeIsNotFound" xml:space="preserve">
+    <value>F# interactive callback type is not found. Type name: {0}.</value>
+  </data>
+  <data name="ErrorCallingFSharpInteractiveCallback" xml:space="preserve">
+    <value>Error calling F# interactive callback. Method name: {0}; Error: {1}.</value>
+  </data>
+  <data name="ErrorInitFSharpInteractiveEnvironment" xml:space="preserve">
+    <value>Error initializing F# execution environment. Error: {0}</value>
+  </data>
+  <data name="ExceptionFailedCreateDbConnectionInstance" xml:space="preserve">
+    <value>Failed creating IDbConnection instance. Type name: {0}; Error: {1}</value>
+  </data>
+  <data name="ExceptionFailedToOpenDbConnection" xml:space="preserve">
+    <value>Failed opening database connection. Error: {0}.</value>
+  </data>
+  <data name="ExceptionNumberOfParamsInSqlStatementIsIncorrect" xml:space="preserve">
+    <value>The numbers of passed parameters and parameters declared in the SQL statement do not match.</value>
+  </data>
+  <data name="ErrorCreatingSqlInteractiveCallback" xml:space="preserve">
+    <value>Error creating SQL interactive callback</value>
+  </data>
+  <data name="NoConnectionString" xml:space="preserve">
+    <value>No connection string specified.</value>
+  </data>
+  <data name="NoConnectionTypeFullName" xml:space="preserve">
+    <value>No connection type full name specified.</value>
+  </data>
+  <data name="NoReturnTypeName" xml:space="preserve">
+    <value>No return type name.</value>
+  </data>
+  <data name="ExceptionNoResultsReturnedFromSqlCallbackQuery" xml:space="preserve">
+    <value>No results returned from the callback's SQLquery.</value>
+  </data>
+  <data name="ExceptionUnknownVirtualSensorDefinitionType" xml:space="preserve">
+    <value>Unknown VirtualSensorDefinitionType. Value: {0}</value>
+  </data>
+  <data name="ExceptionCalculationTaskIsAlreadyStarted" xml:space="preserve">
+    <value>Calculation task is already started.</value>
+  </data>
+  <data name="ErrorAddingValueDefinition" xml:space="preserve">
+    <value>Failed adding value definition. Internal id: {0}.</value>
+  </data>
+  <data name="ExceptionValueDefinitionAlreadyRegistered" xml:space="preserve">
+    <value>Value Definition is already registered. Internal id: {0}.</value>
+  </data>
+  <data name="ErrorSettingUpValueDefinition" xml:space="preserve">
+    <value>Failed setting up value definition. Device id: {0}; Sensor id: {1}.</value>
+  </data>
+  <data name="ErrorCallingSqlStoredProcedureCallback" xml:space="preserve">
+    <value>Error executing SQL stored procedure callback. Error: {0}</value>
+  </data>
+  <data name="ErrorCreatingSqlStoredProcedureCallback" xml:space="preserve">
+    <value>Error creating SQL stored procedure callback.</value>
+  </data>
+  <data name="ErrorCreatingCSharpInteractiveCallback" xml:space="preserve">
+    <value>Error creating C#-interactive callback.</value>
+  </data>
+  <data name="ExceptionFailedCreatingCallbackForSensor" xml:space="preserve">
+    <value>Failed creating callback for sensor. Device id; {0}; Sensor id: {1}.</value>
+  </data>
+  <data name="ExceptionDependentValueDefinitionIsNotVirtual" xml:space="preserve">
+    <value>Dependent value definition is not virtual. Internal id: {0}.</value>
+  </data>
+  <data name="ExceptionValueDefinitionNotFound" xml:space="preserve">
+    <value>Value definition is not found. Internal id: {0}.</value>
+  </data>
+  <data name="ExceptionVirtualSensorHasNoVirtualDefinition" xml:space="preserve">
+    <value>Virtual sensor has no virtual definition. Device id: {0}; Sensor id: {1}</value>
+  </data>
+  <data name="ErrorTypeIsNoSoftwareAgent" xml:space="preserve">
+    <value>The supplied type {0} is no proper subclass of an Activity</value>
+  </data>
+  <data name="ErrorSoftwareAgentProducedNoResult" xml:space="preserve">
+    <value>The software agent {0} produced no result</value>
+  </data>
+  <data name="ErrorPropertyIsMissingInType" xml:space="preserve">
+    <value>Type {0} has no Property of name {1}</value>
+  </data>
+  <data name="ErrorPropertyIsOfWrongType" xml:space="preserve">
+    <value>Type {0} has a property {1}, but it's of the wrong type {2} instead of {3}</value>
+  </data>
+</root>

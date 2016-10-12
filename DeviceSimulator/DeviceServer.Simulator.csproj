@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7673E500-DA5E-4302-BB79-1EBBE72F78FC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DeviceServer.Simulator</RootNamespace>
+    <AssemblyName>DeviceServer.Simulator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>DeviceServer.Simulator.DeviceServerSimulator</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\DeviceServer\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlockingQueue.cs" />
+    <Compile Include="CndepDeviceServer.cs" />
+    <Compile Include="CndepServerCommunicationHandler.cs" />
+    <Compile Include="CommunicationConstants.cs" />
+    <Compile Include="ContentParserFactory.cs" />
+    <Compile Include="Device.cs" />
+    <Compile Include="DeviceConfig.cs" />
+    <Compile Include="DeviceServerSimulator.cs" />
+    <Compile Include="DummySensor.cs" />
+    <Compile Include="EfficientPostRequest.cs" />
+    <Compile Include="GlowFactorActuator.cs" />
+    <Compile Include="HttpClient.cs" />
+    <Compile Include="HttpRestServerCommunicationHandler.cs" />
+    <Compile Include="IContentParser.cs" />
+    <Compile Include="IHardwareSensorSimulator.cs" />
+    <Compile Include="IServerCommunicationHandler.cs" />
+    <Compile Include="JsonParser.cs" />
+    <Compile Include="LimitedQueue.cs" />
+    <Compile Include="LocationSensor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="PutActuatorDataRequest.cs" />
+    <Compile Include="Sensor.cs" />
+    <Compile Include="ServerCommunicationHandlerFactory.cs" />
+    <Compile Include="StoreSensorDataRequest.cs" />
+    <Compile Include="StoreSensorDataResult.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="WaitingBuffer.cs" />
+    <Compile Include="XmlParser.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\fastJSON\fastJSON.csproj">
+      <Project>{207E91B1-C9F8-4913-88E1-3549EF5F3273}</Project>
+      <Name>fastJSON</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common.Server\Common.Server.csproj">
+      <Project>{1e3c334d-8fac-46f4-8ce5-286b4600289e}</Project>
+      <Name>Common.Server</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DeviceServer\TrackingPoint\TrackingPoint.csproj">
+      <Project>{e6129eac-6f12-44f6-bc5d-50c41a27c02a}</Project>
+      <Name>TrackingPoint</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gsiot.Server.Simpulator\Gsiot.Server.Simpulator.csproj">
+      <Project>{db523ec2-9d56-4704-b147-ba69daa47405}</Project>
+      <Name>Gsiot.Server.Simpulator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ConfigData.json" />
+    <None Include="Device.json" />
+    <None Include="packages.config" />
+    <None Include="Sensors.json" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(ProjectDir)Device.json" "$(TargetDir)"
+copy "$(ProjectDir)Sensors.json" "$(TargetDir)"
+copy "$(ProjectDir)ConfigData.json" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

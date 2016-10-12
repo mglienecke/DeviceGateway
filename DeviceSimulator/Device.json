@@ -1,0 +1,12 @@
+﻿{
+	"Id": "UseConfiguration",
+	"Description":"Device Simulator",
+	"DeviceIpEndPoint": "UseConfiguration",
+	"Location": 
+	{
+		"Name":     "Default",
+		"Latitude":  0,
+		"Longitude": 0,
+		"Elevation": 0
+	}
+}

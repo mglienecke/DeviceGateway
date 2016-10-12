@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://tempuri.org/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://namespaces.cconsult.lv" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="InfoWcfService" targetNamespace="http://tempuri.org/">
+<wsp:Policy wsu:Id="InfoWcfServiceCustomNetTcpBinding_policy">
+<wsp:ExactlyOne>
+<wsp:All>
+<msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1"/>
+<wsaw:UsingAddressing/>
+</wsp:All>
+</wsp:ExactlyOne>
+</wsp:Policy>
+<wsdl:import namespace="http://namespaces.cconsult.lv" location="http://beast/InfoWcfService/InfoWcfService.svc?wsdl=wsdl0"/>
+<wsdl:types/>
+<wsdl:binding name="BasicHttpBinding_IInfoWcfService" type="i0:IInfoWcfService">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="FindInfosAfterDate">
+<soap:operation soapAction="http://namespaces.cconsult.lv/IInfoWcfService/FindInfosAfterDate" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="FaultDetailFault">
+<soap:fault name="FaultDetailFault" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="FindInfosAfterDate_Local">
+<soap:operation soapAction="http://namespaces.cconsult.lv/IInfoWcfService/FindInfosAfterDate_Local" style="document"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="FaultDetailFault">
+<soap:fault name="FaultDetailFault" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="InfoWcfServiceCustomNetTcpBinding" type="i0:IInfoWcfService">
+<wsp:PolicyReference URI="#InfoWcfServiceCustomNetTcpBinding_policy"/>
+<soap12:binding transport="http://schemas.microsoft.com/soap/tcp"/>
+<wsdl:operation name="FindInfosAfterDate">
+<soap12:operation soapAction="http://namespaces.cconsult.lv/IInfoWcfService/FindInfosAfterDate" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="FaultDetailFault">
+<soap12:fault name="FaultDetailFault" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+<wsdl:operation name="FindInfosAfterDate_Local">
+<soap12:operation soapAction="http://namespaces.cconsult.lv/IInfoWcfService/FindInfosAfterDate_Local" style="document"/>
+<wsdl:input>
+<soap12:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap12:body use="literal"/>
+</wsdl:output>
+<wsdl:fault name="FaultDetailFault">
+<soap12:fault name="FaultDetailFault" use="literal"/>
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="InfoWcfService">
+<wsdl:port name="BasicHttpBinding_IInfoWcfService" binding="tns:BasicHttpBinding_IInfoWcfService">
+<soap:address location="http://beast/InfoWcfService/InfoWcfService.svc"/>
+</wsdl:port>
+<wsdl:port name="InfoWcfServiceCustomNetTcpBinding" binding="tns:InfoWcfServiceCustomNetTcpBinding">
+<soap12:address location="net.tcp://localhost:4502/InfoWcfService/InfoWcfService.svc"/>
+<wsa10:EndpointReference>
+<wsa10:Address>
+net.tcp://localhost:4502/InfoWcfService/InfoWcfService.svc
+</wsa10:Address>
+</wsa10:EndpointReference>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

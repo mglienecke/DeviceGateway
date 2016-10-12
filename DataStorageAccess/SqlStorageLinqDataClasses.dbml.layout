@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="SqlStorageLinqDataClasses">
+  <DataContextMoniker Name="/SqlStorageLinqDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="1310da99-7426-4470-a406-f762c65432be" absoluteBounds="0.75, 2.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SqlStorageLinqDataClassesDataContext/DbDevice" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b51311b5-db43-4117-85cd-eb589ba51c52" absoluteBounds="0.765, 2.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5878bd36-ef0f-4aac-b0df-1a444981e77a" absoluteBounds="3.75, 1, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/SqlStorageLinqDataClassesDataContext/DbSensor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e74c59f-f612-4915-8047-9827554f49f3" absoluteBounds="3.7650000000000006, 1.46, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 3.20274983723958); (3.75 : 3.20274983723958)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SqlStorageLinqDataClassesDataContext/DbDevice/DbDevice_DbSensor" />
+      <nodes>
+        <classShapeMoniker Id="1310da99-7426-4470-a406-f762c65432be" />
+        <classShapeMoniker Id="5878bd36-ef0f-4aac-b0df-1a444981e77a" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="bafa6156-1e25-43f5-bb4a-ca02ab1fe042" absoluteBounds="7.375, 3.125, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/SqlStorageLinqDataClassesDataContext/DbSensorData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ef01a33c-c427-4ad5-a133-764901bbbccb" absoluteBounds="7.39, 3.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.75 : 4.01044840494792); (7.375 : 4.01044840494792)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SqlStorageLinqDataClassesDataContext/DbSensor/DbSensor_DbSensorData" />
+      <nodes>
+        <classShapeMoniker Id="5878bd36-ef0f-4aac-b0df-1a444981e77a" />
+        <classShapeMoniker Id="bafa6156-1e25-43f5-bb4a-ca02ab1fe042" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="8a34159a-4456-431a-a2e5-22231f41420f" absoluteBounds="7.625, 1, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/SqlStorageLinqDataClassesDataContext/DbSensorDependency" />
+      <nestedChildShapes>
+        <elementListCompartment Id="49e51a9c-9fa4-4916-b8e4-1a82b0bddfeb" absoluteBounds="7.64, 1.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.75 : 1.8339012781779); (7.625 : 1.8339012781779)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SqlStorageLinqDataClassesDataContext/DbSensor/DbSensor_DbSensorDependency" />
+      <nodes>
+        <classShapeMoniker Id="5878bd36-ef0f-4aac-b0df-1a444981e77a" />
+        <classShapeMoniker Id="8a34159a-4456-431a-a2e5-22231f41420f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 1.35445063908895); (7.625 : 1.35445063908895)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/SqlStorageLinqDataClassesDataContext/DbSensor/DbSensor_DbSensorDependency1" />
+      <nodes>
+        <classShapeMoniker Id="5878bd36-ef0f-4aac-b0df-1a444981e77a" />
+        <classShapeMoniker Id="8a34159a-4456-431a-a2e5-22231f41420f" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

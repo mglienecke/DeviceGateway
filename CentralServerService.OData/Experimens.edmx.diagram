@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ea8998b61e94c918765d74094c7fcdc" Name="Diagram1">
+        <EntityTypeShape EntityType="ExperimentsModel.Devices" Width="1.5" PointX="7.375" PointY="7" />
+        <EntityTypeShape EntityType="ExperimentsModel.Sensors" Width="1.5" PointX="5.25" PointY="7" />
+        <EntityTypeShape EntityType="ExperimentsModel.SensorData" Width="1.5" PointX="2.6564739247115674" PointY="7.1052141222661422" />
+        <AssociationConnector Association="ExperimentsModel.FK_DbSensor_DbDevice" />
+        <AssociationConnector Association="ExperimentsModel.FK_DbSensorData_DbSensor" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

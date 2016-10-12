@@ -1,0 +1,7 @@
+﻿#SensorId, PullFrequencyInSeconds
+#1, 50
+#2, 20
+#3, 30
+
+#SensorId, Value
+1, 1

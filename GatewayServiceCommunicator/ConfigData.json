@@ -1,0 +1,32 @@
+﻿{
+	"ServerUrl": "http://192.168.1.2/GatewayService",
+	"IsRefreshDeviceRegOnStartup": true,
+    "TimeoutInMillis": 5000,
+	"DefaultContentType": "application/json",
+	"ServerContentType": "application/json",
+	"ServerCommType": "HttpRest",
+	"SensorConfigs":
+	[
+		{
+		    "$type": "SensorConfig",
+			"Id": "1",
+			"ServerUrl": "http://192.168.1.2/GatewayService",
+			"IsCoalesce": false,
+			"KeepHistory": true,
+			"KeepHistoryMaxRecords": 10,
+			"UseLocalStore": false,
+			"ScanFrequencyInMillis": 10000
+		},
+		{
+			"$type": "SensorConfig",
+			"Id": "2",
+			"ServerUrl": "http://192.168.1.2/GatewayService",
+			"IsCoalesce": false,
+			"KeepHistory": true,
+			"KeepHistoryMaxRecords": 10,
+			"UseLocalStore": false,
+			"ScanFrequencyInMillis": 12000
+		}
+	],
+	"UseServerTime": false
+}

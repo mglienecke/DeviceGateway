@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CancelNotAllowed" xml:space="preserve">
+    <value>Cancel is not allowed for objects which are not cancellable</value>
+  </data>
+  <data name="ChangeValueNotAllowed" xml:space="preserve">
+    <value>Changing the value is not allowed for objects which are not modifiable</value>
+  </data>
+  <data name="ErrorActivatingDataSink" xml:space="preserve">
+    <value>Failed when activating a sensor data sink. Internal sensor id: {0}; Data sink type: {1}.</value>
+  </data>
+  <data name="ErrorDeviceAlreadyRegistered" xml:space="preserve">
+    <value>The device {0} has been registered already</value>
+  </data>
+  <data name="ErrorDeviceIdIsNull" xml:space="preserve">
+    <value>The device id may not been null</value>
+  </data>
+  <data name="ErrorDeviceIsNull" xml:space="preserve">
+    <value>The device may not been null</value>
+  </data>
+  <data name="ErrorDeviceNotRegistered" xml:space="preserve">
+    <value>The device {0} is not registered</value>
+  </data>
+  <data name="ErrorExceptionOccured" xml:space="preserve">
+    <value>In method {0} an exception occured: {1}
+{2}
+{3}</value>
+  </data>
+  <data name="ErrorFailedAddingSensorDependency" xml:space="preserve">
+    <value>Failed adding sensor dependency. Base sensor internal id: {0}; Dependent sensor internal id: {1}.</value>
+  </data>
+  <data name="ErrorFailedGettingCommunicationHandlerForSensor" xml:space="preserve">
+    <value>Failed getting communication handler for sensor. Device id: {0}; Sensor id: {1}.</value>
+  </data>
+  <data name="ErrorFailedScanningSensor" xml:space="preserve">
+    <value>Failed scanning sensor. Device id: {0}; Sensor id: {1}; Error: {2}</value>
+  </data>
+  <data name="ErrorFailedScanningSensorData" xml:space="preserve">
+    <value>Failed scanning sensor data. Device id: {0}; Sensor id: {1}.</value>
+  </data>
+  <data name="ErrorFailedSettingSensorData" xml:space="preserve">
+    <value>Failed sending sensor data to sensor. Device: {0}; Sensor: {1}.</value>
+  </data>
+  <data name="ErrorFailedSettingSensorDataWithDetails" xml:space="preserve">
+    <value>Failed sending sensor data to sensor. Device: {0}; Sensor: {1}; Data: {2}; Error: {3}.</value>
+  </data>
+  <data name="ErrorGetSensorData" xml:space="preserve">
+    <value>Sensor Data for Device {0} (Sensor list: {1}) from {2} until {3} with maximum results {4} could not be retrieved. Error: {5}</value>
+  </data>
+  <data name="ErrorGetSensorDataLatest" xml:space="preserve">
+    <value>Sensor Data for Device {0} (Sensor list: {1}) with maximum results {2} could not be retrieved. Error: {3}</value>
+  </data>
+  <data name="ErrorGettingValuesToWrite" xml:space="preserve">
+    <value>An error occured while determining which value shall be written: {0}</value>
+  </data>
+  <data name="ErrorIdentifierIsInvalid" xml:space="preserve">
+    <value>The identifier {0} is not valid</value>
+  </data>
+  <data name="ErrorInitializingCentralService" xml:space="preserve">
+    <value>An error occured while initializing the central service</value>
+  </data>
+  <data name="ErrorInvalidDataFormatForData" xml:space="preserve">
+    <value>The data item {0} for sensor {1} for device {2} has an invalid format</value>
+  </data>
+  <data name="ErrorNoValueDefinitionForSensor" xml:space="preserve">
+    <value>No ValueDefinition object has been found for the passed sensor. Device id: {0}; sensor id: {1}.</value>
+  </data>
+  <data name="ErrorNullSensorDataPassedInRequest" xml:space="preserve">
+    <value>Null sensor data passed in the request. Device: {0}; Sensor: {1}.</value>
+  </data>
+  <data name="ErrorRegisteringDevice" xml:space="preserve">
+    <value>Device {0} could not be registered. Error: {1}.</value>
+  </data>
+  <data name="ErrorRegisteringSensor" xml:space="preserve">
+    <value>Sensor {0} could not be registered for Device {1}. Error: {2}.</value>
+  </data>
+  <data name="ErrorSensorAlreadyRegistered" xml:space="preserve">
+    <value>The sensor {0} has been already registered for device {1}.</value>
+  </data>
+  <data name="ErrorSensorDataIsNull" xml:space="preserve">
+    <value>The passed sensor data is null.</value>
+  </data>
+  <data name="ErrorSensorIsNotRegistered" xml:space="preserve">
+    <value>Sensor {0} for Device {1} is not registered.</value>
+  </data>
+  <data name="ErrorSensorIsNull" xml:space="preserve">
+    <value>The sensor may not been null.</value>
+  </data>
+  <data name="ErrorSensorListContainsNullElement" xml:space="preserve">
+    <value>The passed sensor list contains a null element.</value>
+  </data>
+  <data name="ErrorSensorListIsNull" xml:space="preserve">
+    <value>The passed sensor list is null.</value>
+  </data>
+  <data name="ErrorSensorNotRegisteredForDevice" xml:space="preserve">
+    <value>Sensor is not registered for the device. Sensor id: {0}; Device Id: {1}.</value>
+  </data>
+  <data name="ErrorSettingUpDeviceScanning" xml:space="preserve">
+    <value>Failed setting up device for scanning. Device id: {0}.</value>
+  </data>
+  <data name="ErrorStoringData" xml:space="preserve">
+    <value>An exception occured while storing value {0} for sensor {1} for device {2}.
+
+{3}</value>
+  </data>
+  <data name="ErrorStoringDataForSensor" xml:space="preserve">
+    <value>Data for sensor {0} could not be stored as the sensor is not registered for device {1}.</value>
+  </data>
+  <data name="ErrorStoringSensorData" xml:space="preserve">
+    <value>Sensor data could not be written.</value>
+  </data>
+  <data name="ErrorUpdatingDevice" xml:space="preserve">
+    <value>Device {0} could not be updated. Error: {1}.</value>
+  </data>
+  <data name="ErrorUpdatingSensor" xml:space="preserve">
+    <value>Sensor {0} could not be updated for Device {1}. Error: {2}.</value>
+  </data>
+  <data name="ErrorWhileStoringSensorData" xml:space="preserve">
+    <value>Data {0}  in format {1} for sensor {2} (device {3}) could not be stored: 
+{4}.</value>
+  </data>
+  <data name="ErrorWritingValues" xml:space="preserve">
+    <value>An error occured while writing the values: {0}.</value>
+  </data>
+  <data name="ExceptionDeviceIsNotInUse" xml:space="preserve">
+    <value>Device is not in use. Id: {0}</value>
+  </data>
+  <data name="ExceptionFailedAddingSensorDependency" xml:space="preserve">
+    <value>Failed adding sensor dependency. Base sensor id: {0}; dependent sensor id: {1}.</value>
+  </data>
+  <data name="ExceptionFailedCreatingIDeviceCommunicationHandlerInstance" xml:space="preserve">
+    <value>Failed creating IDeviceCommunicationHandler instance. Error: {0}</value>
+  </data>
+  <data name="ExceptionFailedGettingSensorsForDevice" xml:space="preserve">
+    <value>Failed getting sensors for device. Error message: {0}</value>
+  </data>
+  <data name="ExceptionFailedRemovingSensorDependency" xml:space="preserve">
+    <value>Failed removing sensor dependency. Base sensor internal id: {0}; dependent sensor internal id: {1}.</value>
+  </data>
+  <data name="ExceptionInvalidConfigurationPropertyValue" xml:space="preserve">
+    <value>Invalid configuration property value. Property: {0}; Value: {1}.</value>
+  </data>
+  <data name="ExceptionSensorIsNotVirtual" xml:space="preserve">
+    <value>Sensor is not virtual. Internal id: {0}.</value>
+  </data>
+  <data name="ExceptionSensorNotFound" xml:space="preserve">
+    <value>Sensor is not found. Internal id: {0}.</value>
+  </data>
+  <data name="ExceptionUnknownVirtualSensorDefinitionType" xml:space="preserve">
+    <value>Unknown VirtualSensorDefinitionType. Value: {0}</value>
+  </data>
+  <data name="InfoStartingScanningDeviceSensors" xml:space="preserve">
+    <value>Starting scanning device sensors. Device  id: {0}.</value>
+  </data>
+  <data name="InfoStartingScanningSensor" xml:space="preserve">
+    <value>Starting scanning sensors. Device id: {0}; Sensor id: {1}.</value>
+  </data>
+  <data name="InfoStoppingScanningDeviceSensors" xml:space="preserve">
+    <value>Stopping scanning device sensors. Device  id: {0}.</value>
+  </data>
+  <data name="InfoStoppingScanningSensor" xml:space="preserve">
+    <value>Stopping scanning sensors. Device id: {0}; Sensor id: {1}.</value>
+  </data>
+</root>

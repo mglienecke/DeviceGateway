@@ -1,0 +1,376 @@
+﻿USE [Experiments]
+GO
+/****** Object:  StoredProcedure [dbo].[MultiplyBy3]    Script Date: 11/05/2012 23:27:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[MultiplyBy3] 
+	@current_value varchar(200),
+	@sensor_internal_id int,
+	@return_value varchar(200) OUT,
+	@is_cancelled bit OUT,
+	@is_modified bit OUT,
+	@is_sample_rate_adjusted bit OUT,
+	@new_sample_rate_in_seconds int OUT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    SET @return_value = CONVERT(varchar(200), 3 * CONVERT(decimal(10,0), @current_value))
+    SET @is_cancelled = 0
+    SET @is_modified = 1
+    RETURN
+END
+GO
+/****** Object:  Table [dbo].[Log]    Script Date: 11/05/2012 23:27:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Log](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[Thread] [varchar](255) NOT NULL,
+	[Level] [varchar](50) NOT NULL,
+	[Logger] [varchar](255) NOT NULL,
+	[Message] [varchar](4000) NOT NULL,
+	[Exception] [varchar](2000) NULL
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[DbDevice]    Script Date: 11/05/2012 23:27:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[DbDevice](
+	[Id] [varchar](128) NOT NULL,
+	[Description] [varchar](4096) NOT NULL,
+	[IpEndPoint] [varchar](64) NOT NULL,
+	[LocationName] [varchar](128) NULL,
+	[Latitude] [decimal](7, 4) NULL,
+	[Longitude] [decimal](7, 4) NULL,
+	[Elevation] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_DbDevice] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[DbSensor]    Script Date: 11/05/2012 23:27:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[DbSensor](
+	[Id] [varchar](128) NOT NULL,
+	[DeviceId] [varchar](128) NOT NULL,
+	[SensorId] [int] IDENTITY(1,1) NOT NULL,
+	[Description] [varchar](4096) NOT NULL,
+	[UnitSymbol] [varchar](10) NOT NULL,
+	[SensorValueDataType] [int] NOT NULL,
+	[SensorDataRetrievalMode] [int] NOT NULL,
+	[ShallSensorDataBePersisted] [bit] NOT NULL,
+	[PersistDirectlyAfterChange] [bit] NOT NULL,
+	[IsVirtualSensor] [bit] NOT NULL,
+	[SensorCategory] [varchar](128) NULL,
+	[SensorDataCalculationMode] [int] NOT NULL,
+	[VirtualSensorDefinitionType] [int] NOT NULL,
+	[VirtualSensorDefininition] [varchar](max) NULL,
+	[PullModeCommunicationType] [int] NOT NULL,
+	[PullModeDotNetType] [varchar](256) NULL,
+	[PullFrequencyInSec] [int] NOT NULL,
+	[DefaultValue] [varchar](max) NULL,
+ CONSTRAINT [PK_DbSensor] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC,
+	[DeviceId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  StoredProcedure [dbo].[CreateDevice]    Script Date: 11/05/2012 23:27:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CreateDevice] 
+	@Id [varchar](128),
+	@Description [varchar](4096),
+	@IpEndPoint [varchar](64),
+	@LocationName [varchar](128),
+	@Latitude [decimal](7, 4),
+	@Longitude [decimal](7, 4),
+	@Elevation [decimal](18, 2)
+AS
+BEGIN
+	INSERT INTO DbDevice (Id, Description, IpEndPoint, LocationName, Latitude, Longitude, Elevation)
+	VALUES (@Id, @Description, @IpEndPoint, @LocationName, @Latitude, @Longitude, @Elevation);
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UpdateDevice]    Script Date: 11/05/2012 23:27:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[UpdateDevice] 
+	@Id [varchar](128),
+	@Description [varchar](4096),
+	@IpEndPoint [varchar](64),
+	@LocationName [varchar](128),
+	@Latitude [decimal](7, 4),
+	@Longitude [decimal](7, 4),
+	@Elevation [decimal](18, 2)
+AS
+BEGIN
+	UPDATE DbDevice
+	SET Description = @Description, 
+		IpEndPoint = @IpEndPoint,
+		LocationName = @LocationName, 
+		Latitude = @Latitude, 
+		Longitude = @Longitude, 
+		Elevation = @Elevation
+	WHERE Id = @Id;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[UpdateSensor]    Script Date: 11/05/2012 23:27:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[UpdateSensor] 
+	@SensorId int,
+	@Description varchar(4096)  ,
+	@UnitSymbol varchar(10)  ,
+	@SensorValueDataType int  ,
+	@SensorDataRetrievalMode int  ,
+	@ShallSensorDataBePersisted bit  ,
+	@PersistDirectlyAfterChange bit  ,
+	@IsVirtualSensor bit  ,
+	@SensorCategory varchar(128) ,
+	@SensorDataCalculationMode int  ,
+	@VirtualSensorDefinitionType int  ,
+	@VirtualSensorDefininition varchar(max) ,
+	@PullModeCommunicationType int  ,
+	@PullModeDotNetType varchar(256) ,
+	@PullFrequencyInSec int,
+	@DefaultValue varchar(MAX)  
+AS
+BEGIN
+	UPDATE dbo.DbSensor 
+	SET 
+		Description = @Description,
+		UnitSymbol = @UnitSymbol,
+		SensorValueDataType = @SensorValueDataType,
+		SensorDataRetrievalMode = @SensorDataRetrievalMode,
+		ShallSensorDataBePersisted = @ShallSensorDataBePersisted,
+		PersistDirectlyAfterChange = @PersistDirectlyAfterChange,
+		IsVirtualSensor = @IsVirtualSensor,
+		SensorCategory = @SensorCategory,
+		SensorDataCalculationMode = @SensorDataCalculationMode,
+		VirtualSensorDefinitionType = @VirtualSensorDefinitionType,
+		VirtualSensorDefininition = @VirtualSensorDefininition,
+		PullModeCommunicationType = @PullModeCommunicationType,
+		PullModeDotNetType = @PullModeDotNetType,
+		PullFrequencyInSec = @PullFrequencyInSec,
+		DefaultValue = @DefaultValue
+	WHERE SensorId = @SensorId;
+END
+GO
+/****** Object:  Table [dbo].[DbSensorDependency]    Script Date: 11/05/2012 23:27:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DbSensorDependency](
+	[BaseSensorId] [int] NOT NULL,
+	[DependentSensorId] [int] NOT NULL,
+ CONSTRAINT [PK_DbSensorDependency] PRIMARY KEY CLUSTERED 
+(
+	[BaseSensorId] ASC,
+	[DependentSensorId] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DbSensorData]    Script Date: 11/05/2012 23:27:57 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[DbSensorData](
+	[Identity] [int] IDENTITY(1,1) NOT NULL,
+	[SensorId] [int] NOT NULL,
+	[TakenWhen] [datetime] NOT NULL,
+	[Value] [varchar](max) NOT NULL,
+ CONSTRAINT [PK_DbSensorData] PRIMARY KEY CLUSTERED 
+(
+	[Identity] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  StoredProcedure [dbo].[CreateSensor]    Script Date: 11/05/2012 23:27:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CreateSensor] 
+	@Id varchar(128)  ,
+	@DeviceId varchar(128)  ,
+	@Description varchar(4096)  ,
+	@UnitSymbol varchar(10)  ,
+	@SensorValueDataType int  ,
+	@SensorDataRetrievalMode int  ,
+	@ShallSensorDataBePersisted bit  ,
+	@PersistDirectlyAfterChange bit  ,
+	@IsVirtualSensor bit  ,
+	@SensorCategory varchar(128) ,
+	@SensorDataCalculationMode int  ,
+	@VirtualSensorDefinitionType int  ,
+	@VirtualSensorDefininition varchar(max) ,
+	@PullModeCommunicationType int  ,
+	@PullModeDotNetType varchar(256) ,
+	@PullFrequencyInSec int ,
+	@DefaultValue varchar(MAX) 
+AS
+BEGIN
+	INSERT INTO dbo.DbSensor (
+		Id,
+		DeviceId,
+		Description,
+		UnitSymbol,
+		SensorValueDataType,
+		SensorDataRetrievalMode,
+		ShallSensorDataBePersisted,
+		PersistDirectlyAfterChange,
+		IsVirtualSensor,
+		SensorCategory,
+		SensorDataCalculationMode,
+		VirtualSensorDefinitionType,
+		VirtualSensorDefininition,
+		PullModeCommunicationType,
+		PullModeDotNetType,
+		PullFrequencyInSec,
+		DefaultValue)
+	VALUES (
+		@Id,
+		@DeviceId,
+		@Description,
+		@UnitSymbol,
+		@SensorValueDataType,
+		@SensorDataRetrievalMode,
+		@ShallSensorDataBePersisted,
+		@PersistDirectlyAfterChange,
+		@IsVirtualSensor,
+		@SensorCategory,
+		@SensorDataCalculationMode,
+		@VirtualSensorDefinitionType,
+		@VirtualSensorDefininition,
+		@PullModeCommunicationType,
+		@PullModeDotNetType,
+		@PullFrequencyInSec,
+		@DefaultValue);
+		
+	SELECT SCOPE_IDENTITY();
+END
+GO
+/****** Object:  StoredProcedure [dbo].[DeleteSensorDependency]    Script Date: 11/05/2012 23:27:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[DeleteSensorDependency]
+	@baseSensorId int,
+	@dependentSensorId int
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    DELETE FROM DbSensorDependency WHERE BaseSensorId = @baseSensorId AND DependentSensorId = @dependentSensorId;
+END
+GO
+/****** Object:  StoredProcedure [dbo].[CreateSensorDependency]    Script Date: 11/05/2012 23:27:56 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CreateSensorDependency]
+	@baseSensorId int,
+	@dependentSensorId int
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+    INSERT INTO DbSensorDependency (BaseSensorId, DependentSensorId) VALUES (@baseSensorId, @dependentSensorId);
+END
+GO
+/****** Object:  Default [DF_DbSensor_SensorValueDataType]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor] ADD  CONSTRAINT [DF_DbSensor_SensorValueDataType]  DEFAULT ((0)) FOR [SensorValueDataType]
+GO
+/****** Object:  Default [DF_DbSensor_SensorDataRetrievalMode]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor] ADD  CONSTRAINT [DF_DbSensor_SensorDataRetrievalMode]  DEFAULT ((0)) FOR [SensorDataRetrievalMode]
+GO
+/****** Object:  Default [DF_DbSensor_ShallSensorDataBePersisted]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor] ADD  CONSTRAINT [DF_DbSensor_ShallSensorDataBePersisted]  DEFAULT ((1)) FOR [ShallSensorDataBePersisted]
+GO
+/****** Object:  Default [DF_DbSensor_PersistDirectlyAfterChange]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor] ADD  CONSTRAINT [DF_DbSensor_PersistDirectlyAfterChange]  DEFAULT ((0)) FOR [PersistDirectlyAfterChange]
+GO
+/****** Object:  Default [DF_DbSensor_SensorDataCalculationMode]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor] ADD  CONSTRAINT [DF_DbSensor_SensorDataCalculationMode]  DEFAULT ((0)) FOR [SensorDataCalculationMode]
+GO
+/****** Object:  Default [DF_DbSensor_VirtualSensorDefinitionType]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor] ADD  CONSTRAINT [DF_DbSensor_VirtualSensorDefinitionType]  DEFAULT ((0)) FOR [VirtualSensorDefinitionType]
+GO
+/****** Object:  Default [DF_DbSensor_PullModeCommunicationType]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor] ADD  CONSTRAINT [DF_DbSensor_PullModeCommunicationType]  DEFAULT ((0)) FOR [PullModeCommunicationType]
+GO
+/****** Object:  Default [DF_DbSensor_PullModeDotNetType]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor] ADD  CONSTRAINT [DF_DbSensor_PullModeDotNetType]  DEFAULT ((0)) FOR [PullModeDotNetType]
+GO
+/****** Object:  Default [DF_DbSensor_SensorDataScanningInSecs]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor] ADD  CONSTRAINT [DF_DbSensor_SensorDataScanningInSecs]  DEFAULT ((0)) FOR [PullFrequencyInSec]
+GO
+/****** Object:  ForeignKey [FK_DbSensorDependency_DbSensor]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensorDependency]  WITH CHECK ADD  CONSTRAINT [FK_DbSensorDependency_DbSensor] FOREIGN KEY([BaseSensorId])
+REFERENCES [dbo].[DbSensor] ([SensorId])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[DbSensorDependency] CHECK CONSTRAINT [FK_DbSensorDependency_DbSensor]
+GO
+/****** Object:  ForeignKey [FK_DbSensorDependency_DbSensor1]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensorDependency]  WITH CHECK ADD  CONSTRAINT [FK_DbSensorDependency_DbSensor1] FOREIGN KEY([DependentSensorId])
+REFERENCES [dbo].[DbSensor] ([SensorId])
+GO
+ALTER TABLE [dbo].[DbSensorDependency] CHECK CONSTRAINT [FK_DbSensorDependency_DbSensor1]
+GO
+/****** Object:  ForeignKey [FK_DbSensorData_DbSensor]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensorData]  WITH NOCHECK ADD  CONSTRAINT [FK_DbSensorData_DbSensor] FOREIGN KEY([SensorId])
+REFERENCES [dbo].[DbSensor] ([SensorId])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[DbSensorData] CHECK CONSTRAINT [FK_DbSensorData_DbSensor]
+GO
+/****** Object:  ForeignKey [FK_DbSensor_DbDevice]    Script Date: 11/05/2012 23:27:57 ******/
+ALTER TABLE [dbo].[DbSensor]  WITH CHECK ADD  CONSTRAINT [FK_DbSensor_DbDevice] FOREIGN KEY([DeviceId])
+REFERENCES [dbo].[DbDevice] ([Id])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[DbSensor] CHECK CONSTRAINT [FK_DbSensor_DbDevice]
+GO

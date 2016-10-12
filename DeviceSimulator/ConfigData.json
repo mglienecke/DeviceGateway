@@ -1,0 +1,23 @@
+﻿
+{
+	"ServerUrl": "http://localhost/GatewayService",
+	"IsRefreshDeviceRegOnStartup": false,
+    "TimeoutInMillis": 15000,
+	"DefaultContentType": "application/json",
+	"ServerContentType": "application/json",
+	"ServerCommType": "Cndep",
+	"SensorConfigs":
+	[
+		{
+		    "$type": "SensorConfig",
+			"Id": "chamberSensor",
+			"ServerUrl": "http://@localhost/GatewayService",
+			"IsCoalesce": false,
+			"KeepHistory": true,
+			"KeepHistoryMaxRecords": 10,
+			"UseLocalStore": false,
+			"ScanFrequencyInMillis": 10000
+		}
+	],
+	"UseServerTime": false
+}

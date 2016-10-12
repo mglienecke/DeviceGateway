@@ -1,0 +1,52 @@
+﻿[
+	{
+		"DeviceId": "UseConfiguration",
+		"Id": "position",
+		"Description": "Position sensor",
+		"IsVirtualSensor": false,
+		"UnitSymbol": "xyz",
+		"SensorDataRetrievalMode": 1, 
+		"SensorValueDataType": 18,
+		"PullModeCommunicationType": 4,
+		"Category": "test",
+		"PullFrequencyInSeconds": 5,
+		"ShallSensorDataBePersisted": false,
+		"PersistDirectlyAfterChange": true,
+		"PullModeDotNetObjectType": "",
+		"HardwareSensorSimulatorTypeName": "CorrosionChamber.DeviceSimulator.Launcher.PartPositionSensor, CorrosionChamber.DeviceSimulator.Launcher"
+	},
+	{
+		"DeviceId": "UseConfiguration",
+		"Id": "chamberSensor",
+		"Description": "Chamber parameters sensor",
+		"IsVirtualSensor": false,
+		"UnitSymbol": "xyz",
+		"SensorDataRetrievalMode": 2, 
+		"SensorValueDataType": 18,
+		"PullModeCommunicationType": 4,
+		"Category": "test",
+		"PullFrequencyInSeconds": 15,
+		"ShallSensorDataBePersisted": true,
+		"PersistDirectlyAfterChange": true,
+		"PullModeDotNetObjectType": "",
+		"HardwareSensorSimulatorTypeName": "CorrosionChamber.DeviceSimulator.Launcher.ChamberSensor, CorrosionChamber.DeviceSimulator.Launcher"
+	},
+	{
+		"DeviceId": "UseConfiguration",
+		"Id": "alertSensor",
+		"Description": "Actuator for showing alerts.",
+		"IsVirtualSensor": false,
+		"UnitSymbol": "U",
+		"SensorDataRetrievalMode": 4, 
+		"SensorValueDataType": 15,
+		"PushModeCommunicationType": 4,
+		"Category": "test",
+		"PullFrequencyInSeconds": 0,
+		"ShallSensorDataBePersisted": true,
+		"PersistDirectlyAfterChange": true,
+		"PullModeDotNetObjectType": "",
+		"IsActuator": true,
+		"IsSynchronousPushToActuator": false,
+		"HardwareSensorSimulatorTypeName": "CorrosionChamber.DeviceSimulator.Launcher.AlertSensor, CorrosionChamber.DeviceSimulator.Launcher"
+	}
+]

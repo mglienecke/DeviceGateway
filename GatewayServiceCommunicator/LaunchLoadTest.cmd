@@ -1,0 +1,1 @@
+for /L %i in (1, 1, 20) do start GatewayService.LoadTest.exe RetrieveSensorData -DeviceId:192.168.1.37-1 -SensorId:1 -NumOfParallelRequests:5 -MaxValuesPerSensor:10 -CommMode:Remoting -TimingResultFile:Result_New_Remoting_5_%i

@@ -1,0 +1,12 @@
+﻿{
+	"Id": "192.168.1.5-1",
+	"Description":"Device Simulator",
+	"DeviceIpEndPoint": "192.168.1.2:41115",
+	"Location": 
+	{
+		"Name":     "Somehwere",
+		"Latitude":  1.2,
+		"Longitude": 2.3,
+		"Elevation": 5.0
+	}
+}

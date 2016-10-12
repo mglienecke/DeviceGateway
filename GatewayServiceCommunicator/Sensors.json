@@ -1,0 +1,36 @@
+﻿	{{
+		"DeviceId": "192.169.1.5-1",
+		"Id": "{0}",
+		"Description": "test sensor {0}",
+		"IsVirtualSensor": true,
+		"UnitSymbol": "?",
+		"SensorDataRetrievalMode": 1,
+		"SensorValueDataType": 9,
+		"PullModeCommunicationType": 1,
+		"Category": "test",
+		"PullFrequencyInSeconds": {1},
+		"ShallSensorDataBePersisted": true,
+		"PersistDirectlyAfterChange": true,
+		"PullModeDotNetObjectType": "",
+		"VirtualSensorDefinition": {{
+			"VirtualSensorCalculationType": 3,
+            "VirtualSensorDefinitionType": 4,
+			"Definition": "
+import clr
+import ValueManagement.DynamicCallback
+from ValueManagement.DynamicCallback import *
+clr.AddReference('GlobalDataContracts')
+import GlobalDataContracts
+from GlobalDataContracts import *
+
+# callback for general check
+def VirtualValueCalculationCallback(callbackPassIn):
+    callbackResult = CallbackResultData()
+    callbackResult.IsValueModified = True
+    if callbackPassIn.CurrentValue is None:
+        callbackResult.NewValue = GlobalDataContracts.SensorData(str(0))
+    else:
+        callbackResult.NewValue = GlobalDataContracts.SensorData(str(int(callbackPassIn.CurrentValue.Value) * 1))
+    return(callbackResult);"
+		}}
+	}}

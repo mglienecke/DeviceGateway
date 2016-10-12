@@ -1,0 +1,2 @@
+﻿RetrieveSensorData -DeviceId:192168151 -SensorId:1 -NumOfParallelRequests:1 -MaxValuesPerSensor:10 -TimingResultFile:Out.txt
+PushSensorData -DeviceId:192168151 -SensorId:1 -NumOfParallelRequests:1 -CycleCount:10 -IsBulkDataPut:False -TimingResultFile:Out.txt

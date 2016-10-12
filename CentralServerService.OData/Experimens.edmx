@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ExperimentsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DbDevice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="4096" Nullable="false" />
+          <Property Name="IpEndPoint" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="LocationName" Type="varchar" MaxLength="128" />
+          <Property Name="Latitude" Type="decimal" Precision="7" Scale="4" />
+          <Property Name="Longitude" Type="decimal" Precision="7" Scale="4" />
+          <Property Name="Elevation" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="DbSensor">
+          <Key>
+            <PropertyRef Name="SensorId" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="DeviceId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="SensorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="4096" Nullable="false" />
+          <Property Name="UnitSymbol" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="SensorValueDataType" Type="int" Nullable="false" />
+          <Property Name="SensorDataRetrievalMode" Type="int" Nullable="false" />
+          <Property Name="ShallSensorDataBePersisted" Type="bit" Nullable="false" />
+          <Property Name="PersistDirectlyAfterChange" Type="bit" Nullable="false" />
+          <Property Name="IsVirtualSensor" Type="bit" Nullable="false" />
+          <Property Name="SensorCategory" Type="varchar" MaxLength="128" />
+          <Property Name="SensorDataCalculationMode" Type="int" Nullable="false" />
+          <Property Name="VirtualSensorDefinitionType" Type="int" Nullable="false" />
+          <Property Name="VirtualSensorDefininition" Type="varchar(max)" />
+          <Property Name="PullModeCommunicationType" Type="int" Nullable="false" />
+          <Property Name="PullModeDotNetType" Type="varchar" MaxLength="256" />
+          <Property Name="PullFrequencyInSec" Type="int" Nullable="false" />
+          <Property Name="DefaultValue" Type="varchar(max)" />
+          <Property Name="IsSynchronousPushToActuator" Type="bit" Nullable="false" />
+          <Property Name="IsActuator" Type="bit" Nullable="false" />
+          <Property Name="PushModeCommunicationType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DbSensorData">
+          <Key>
+            <PropertyRef Name="Identity" />
+          </Key>
+          <Property Name="Identity" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SensorId" Type="int" Nullable="false" />
+          <Property Name="TakenWhen" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Value" Type="varchar(max)" Nullable="false" />
+          <Property Name="CorrelationId" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK_DbSensor_DbDevice">
+          <End Role="DbDevice" Type="Self.DbDevice" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DbSensor" Type="Self.DbSensor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DbDevice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DbSensor">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DbSensorData_DbSensor">
+          <End Role="DbSensor" Type="Self.DbSensor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DbSensorData" Type="Self.DbSensorData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DbSensor">
+              <PropertyRef Name="SensorId" />
+            </Principal>
+            <Dependent Role="DbSensorData">
+              <PropertyRef Name="SensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ExperimentsModelStoreContainer">
+          <EntitySet Name="DbDevice" EntityType="Self.DbDevice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DbSensor" EntityType="Self.DbSensor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DbSensorData" EntityType="Self.DbSensorData" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DbSensor_DbDevice" Association="Self.FK_DbSensor_DbDevice">
+            <End Role="DbDevice" EntitySet="DbDevice" />
+            <End Role="DbSensor" EntitySet="DbSensor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DbSensorData_DbSensor" Association="Self.FK_DbSensorData_DbSensor">
+            <End Role="DbSensor" EntitySet="DbSensor" />
+            <End Role="DbSensorData" EntitySet="DbSensorData" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExperimentsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Devices" EntityType="ExperimentsModel.Devices" />
+          <EntitySet Name="Sensors" EntityType="ExperimentsModel.Sensors" />
+          <EntitySet Name="SensorData" EntityType="ExperimentsModel.SensorData" />
+          <AssociationSet Name="FK_DbSensor_DbDevice" Association="ExperimentsModel.FK_DbSensor_DbDevice">
+            <End Role="DbDevice" EntitySet="Devices" />
+            <End Role="DbSensor" EntitySet="Sensors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DbSensorData_DbSensor" Association="ExperimentsModel.FK_DbSensorData_DbSensor">
+            <End Role="DbSensor" EntitySet="Sensors" />
+            <End Role="DbSensorData" EntitySet="SensorData" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="String" Name="Id" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="4096" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IpEndPoint" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LocationName" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Latitude" Precision="7" Scale="4" />
+          <Property Type="Decimal" Name="Longitude" Precision="7" Scale="4" />
+          <Property Type="Decimal" Name="Elevation" Precision="18" Scale="2" />
+          <NavigationProperty Name="Sensors" Relationship="ExperimentsModel.FK_DbSensor_DbDevice" FromRole="DbDevice" ToRole="DbSensor" />
+        </EntityType>
+        <EntityType Name="Sensors">
+          <Key>
+            <PropertyRef Name="SensorId" />
+          </Key>
+          <Property Type="String" Name="Id" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DeviceId" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SensorId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="4096" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="UnitSymbol" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SensorValueDataType" Nullable="false" />
+          <Property Type="Int32" Name="SensorDataRetrievalMode" Nullable="false" />
+          <Property Type="Boolean" Name="ShallSensorDataBePersisted" Nullable="false" />
+          <Property Type="Boolean" Name="PersistDirectlyAfterChange" Nullable="false" />
+          <Property Type="Boolean" Name="IsVirtualSensor" Nullable="false" />
+          <Property Type="String" Name="SensorCategory" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="SensorDataCalculationMode" Nullable="false" />
+          <Property Type="Int32" Name="VirtualSensorDefinitionType" Nullable="false" />
+          <Property Type="String" Name="VirtualSensorDefininition" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PullModeCommunicationType" Nullable="false" />
+          <Property Type="String" Name="PullModeDotNetType" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PullFrequencyInSec" Nullable="false" />
+          <Property Type="String" Name="DefaultValue" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Device" Relationship="ExperimentsModel.FK_DbSensor_DbDevice" FromRole="DbSensor" ToRole="DbDevice" />
+          <NavigationProperty Name="SensorData" Relationship="ExperimentsModel.FK_DbSensorData_DbSensor" FromRole="DbSensor" ToRole="DbSensorData" />
+          <Property Name="IsSynchronousPushToActuator" Type="Boolean" Nullable="false" />
+          <Property Name="IsActuator" Type="Boolean" Nullable="false" />
+          <Property Name="PushModeCommunicationType" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SensorData">
+          <Key>
+            <PropertyRef Name="Identity" />
+          </Key>
+          <Property Type="Int32" Name="Identity" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SensorId" Nullable="false" />
+          <Property Type="DateTime" Name="TakenWhen" Nullable="false" Precision="7" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Sensor" Relationship="ExperimentsModel.FK_DbSensorData_DbSensor" FromRole="DbSensorData" ToRole="DbSensor" />
+          <Property Name="CorrelationId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_DbSensor_DbDevice">
+          <End Type="ExperimentsModel.Devices" Role="DbDevice" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ExperimentsModel.Sensors" Role="DbSensor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DbDevice">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DbSensor">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DbSensorData_DbSensor">
+          <End Type="ExperimentsModel.Sensors" Role="DbSensor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="ExperimentsModel.SensorData" Role="DbSensorData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DbSensor">
+              <PropertyRef Name="SensorId" />
+            </Principal>
+            <Dependent Role="DbSensorData">
+              <PropertyRef Name="SensorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExperimentsModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="ExperimentsModel.Devices">
+              <MappingFragment StoreEntitySet="DbDevice">
+                <ScalarProperty Name="Elevation" ColumnName="Elevation" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="IpEndPoint" ColumnName="IpEndPoint" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sensors">
+            <EntityTypeMapping TypeName="ExperimentsModel.Sensors">
+              <MappingFragment StoreEntitySet="DbSensor">
+                <ScalarProperty Name="PushModeCommunicationType" ColumnName="PushModeCommunicationType" />
+                <ScalarProperty Name="IsActuator" ColumnName="IsActuator" />
+                <ScalarProperty Name="IsSynchronousPushToActuator" ColumnName="IsSynchronousPushToActuator" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="PullFrequencyInSec" ColumnName="PullFrequencyInSec" />
+                <ScalarProperty Name="PullModeDotNetType" ColumnName="PullModeDotNetType" />
+                <ScalarProperty Name="PullModeCommunicationType" ColumnName="PullModeCommunicationType" />
+                <ScalarProperty Name="VirtualSensorDefininition" ColumnName="VirtualSensorDefininition" />
+                <ScalarProperty Name="VirtualSensorDefinitionType" ColumnName="VirtualSensorDefinitionType" />
+                <ScalarProperty Name="SensorDataCalculationMode" ColumnName="SensorDataCalculationMode" />
+                <ScalarProperty Name="SensorCategory" ColumnName="SensorCategory" />
+                <ScalarProperty Name="IsVirtualSensor" ColumnName="IsVirtualSensor" />
+                <ScalarProperty Name="PersistDirectlyAfterChange" ColumnName="PersistDirectlyAfterChange" />
+                <ScalarProperty Name="ShallSensorDataBePersisted" ColumnName="ShallSensorDataBePersisted" />
+                <ScalarProperty Name="SensorDataRetrievalMode" ColumnName="SensorDataRetrievalMode" />
+                <ScalarProperty Name="SensorValueDataType" ColumnName="SensorValueDataType" />
+                <ScalarProperty Name="UnitSymbol" ColumnName="UnitSymbol" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SensorData">
+            <EntityTypeMapping TypeName="ExperimentsModel.SensorData">
+              <MappingFragment StoreEntitySet="DbSensorData">
+                <ScalarProperty Name="CorrelationId" ColumnName="CorrelationId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="TakenWhen" ColumnName="TakenWhen" />
+                <ScalarProperty Name="SensorId" ColumnName="SensorId" />
+                <ScalarProperty Name="Identity" ColumnName="Identity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

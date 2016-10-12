@@ -1,0 +1,243 @@
+<!-- edited with XMLSpy v2010 rel. 2 (http://www.altova.com) by Michael Glienecke (C-Consult SIA) -->
+<!-- Mit XMLSpy v2011 sp1 (x64) (http://www.altova.com) von Michael Glienecke (C-Consult SIA) bearbeitet -->
+<xsi:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://www.eeml.org/xsd/005" xmlns:ns1="http://GatewayService" xmlns:tns="http://GatewayService" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns2="http://GatewayService" targetNamespace="http://GatewayService" elementFormDefault="qualified">
+	<xsi:complexType name="StringList">
+		<xsi:sequence>
+			<xsi:element name="String" type="xsi:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:simpleType name="SensorValueDataType">
+		<xsi:restriction base="xs:string">
+			<xsi:enumeration value="Bit"/>
+			<xsi:enumeration value="Int"/>
+			<xsi:enumeration value="Long"/>
+			<xsi:enumeration value="Decimal"/>
+			<xsi:enumeration value="String"/>
+		</xsi:restriction>
+	</xsi:simpleType>
+	<xsi:simpleType name="SensorDataRetrievalMode">
+		<xsi:restriction base="xs:string">
+			<xsi:enumeration value="Pull"/>
+			<xsi:enumeration value="Push"/>
+			<xsi:enumeration value="Both"/>
+		</xsi:restriction>
+	</xsi:simpleType>
+	<xsi:simpleType name="PullModeCommunicationType">
+		<xsi:restriction base="xs:string">
+			<xsi:enumeration value="REST"/>
+			<xsi:enumeration value="SOAP"/>
+			<xsi:enumeration value="Assembly"/>
+		</xsi:restriction>
+	</xsi:simpleType>
+	<xsi:simpleType name="SensorDefinitionType">
+		<xsi:restriction base="xs:string">
+			<xsi:enumeration value="Formula"/>
+			<xsi:enumeration value="FSharp_Expression"/>
+			<xsi:enumeration value="CSharp_Expression"/>
+			<xsi:enumeration value="IronPhyton"/>
+			<xsi:enumeration value="IronRuby"/>
+			<xsi:enumeration value="Assembly"/>
+			<xsi:enumeration value="SQL"/>
+    <xsi:enumeration value="WWF"/>
+		</xsi:restriction>
+	</xsi:simpleType>
+	<xsi:simpleType name="SensorDataCalculationMode">
+		<xsi:restriction base="xs:string">
+			<xsi:enumeration value="Cyclic"/>
+			<xsi:enumeration value="OnChange"/>
+			<xsi:enumeration value="OnRequest"/>
+		</xsi:restriction>
+	</xsi:simpleType>
+	<xsi:complexType name="Device">
+		<xsi:sequence id="xs">
+			<xsi:element name="Id" type="ns1:IdType">
+				<xsi:annotation>
+					<xsi:documentation>must be unique among different devices in a system. If not then several sensors are merged under one device name</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+			<xsi:element name="Description" type="xs:string"/>
+			<xsi:element name="LocName" type="xsi:string" minOccurs="0"/>
+			<xsi:element name="LocLat" type="ns1:LatitudeType" minOccurs="0"/>
+			<xsi:element name="LocLon" type="ns1:LongitudeType" minOccurs="0"/>
+			<xsi:element name="LocEle" type="xsi:double" minOccurs="0"/>
+			<xsi:element name="DeviceIpAddress" type="xsi:anyURI"/>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:complexType name="SensorList">
+		<xsi:sequence>
+			<xsi:element name="Sensors" type="ns1:Sensor" minOccurs="0" maxOccurs="unbounded"/>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:complexType name="DeviceList">
+		<xsi:sequence>
+			<xsi:element name="Devices" type="ns1:Device" minOccurs="0" maxOccurs="unbounded"/>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:complexType name="MultipleSensorDataList">
+		<xsi:sequence minOccurs="0">
+			<xsi:element name="Data" type="ns1:MultipleSensorData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:complexType name="OperationResult">
+		<xsi:sequence>
+			<xsi:element name="Success" type="xsi:boolean"/>
+			<xsi:element name="ErrorMessages" type="xsi:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:complexType name="MultipleSensorData">
+		<xsi:sequence>
+			<xsi:element name="SensorId" type="xsi:string"/>
+			<xsi:element name="SensorData" type="ns1:SensorData" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:complexType name="Location">
+		<xsi:sequence/>
+	</xsi:complexType>
+	<xsi:complexType name="VirtualSensorDefinition">
+		<xsi:sequence>
+			<xsi:element name="SensorDataCalculationMode" type="ns1:SensorDataCalculationMode">
+				<xsi:annotation>
+					<xsi:documentation>Which calculation mode shall be used - when the value of the underlying sensors change, cyclic or on request for value</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+			<xsi:element name="SensorDefinitionType" type="ns1:SensorDefinitionType">
+				<xsi:annotation>
+					<xsi:documentation>Can bei either Formula (a specific version for the language as well), Assembly or SQL</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+			<xsi:element name="SensorDefinition" type="xsi:string">
+				<xsi:annotation>
+					<xsi:documentation>the actual definition of the sensor. Depending on the definition type this can be a SQL statement, a formular in IronPhyton, an internal script or an external assembly reference</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:complexType name="Sensor">
+		<xsi:sequence>
+			<xsi:element name="DeviceId" type="xsi:string">
+				<xsi:annotation>
+					<xsi:documentation>The id of the device this sensor is attached with</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+			<xsi:element name="Id" type="ns1:IdType" nillable="false">
+				<xsi:annotation>
+					<xsi:documentation>must be unique within a 's list of sensor definitions for a device</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+			<xsi:element name="Description" type="xs:string"/>
+			<xsi:element name="SensorDataRetrievalMode" type="ns1:SensorDataRetrievalMode"/>
+			<xsi:element name="IsVirtualSensor" type="xs:boolean"/>
+			<xsi:element name="ShallSensorDataBePersisted" type="xsi:boolean"/>
+			<xsi:element name="VirtualSensorDefinition" type="ns1:VirtualSensorDefinition" minOccurs="0"/>
+			<xsi:element name="UnitSymbol" type="xsi:string"/>
+			<xsi:element name="SensorValueDataType" type="ns1:SensorValueDataType">
+				<xsi:annotation>
+					<xsi:documentation>the data type used to store sensor values</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+			<xsi:element name="PullFrequencyInSecs" type="xsi:int" default="0" minOccurs="0"/>
+			<xsi:element name="PullModeCommunicationType" type="ns1:PullModeCommunicationType" minOccurs="0">
+				<xsi:annotation>
+					<xsi:documentation>which communication type (REST, SOAP, Assembly) shall be used while pulling</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+			<xsi:element name="PullModeAssemblyType" type="xsi:string" minOccurs="0">
+				<xsi:annotation>
+					<xsi:documentation>If Assembly is the Pull-Mode-Type then speficiy the actual type name (.NET)</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+			<xsi:element name="SensorCategory" type="xsi:string" minOccurs="0">
+				<xsi:annotation>
+					<xsi:documentation>What kind of sensor is this (e.g. temperature, pressure, etc.)</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+			<xsi:element name="DefaultValue" type="xsi:string" minOccurs="0">
+				<xsi:annotation>
+					<xsi:documentation>Default value for the sensor. Its is to be returned when the sensor's value has not been yet set</xsi:documentation>
+				</xsi:annotation>
+			</xsi:element>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:complexType name="SensorData">
+		<xsi:all>
+			<xsi:element name="TakenWhen" type="xsi:dateTime"/>
+			<xsi:element name="Value" type="xsi:string"/>
+		</xsi:all>
+	</xsi:complexType>
+	<xsi:complexType name="IdList">
+		<xsi:sequence>
+			<xsi:element name="element" type="xsi:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xsi:sequence>
+	</xsi:complexType>
+	<xsi:simpleType name="IdType">
+		<xsi:restriction base="xs:string">
+			<xsi:minLength value="1"/>
+		</xsi:restriction>
+	</xsi:simpleType>
+	<xsi:simpleType name="LongitudeType">
+		<xsi:restriction base="xsi:double">
+			<xsi:minInclusive value="-90"/>
+			<xsi:maxInclusive value="90"/>
+		</xsi:restriction>
+	</xsi:simpleType>
+	<xsi:simpleType name="LatitudeType">
+		<xsi:restriction base="xsi:double">
+			<xsi:minInclusive value="-180"/>
+			<xsi:maxInclusive value="180"/>
+		</xsi:restriction>
+	</xsi:simpleType>
+	<xsi:complexType name="IsDeviceIdUsedResult">
+		<xsi:complexContent>
+			<xsi:extension base="ns1:OperationResult">
+				<xsi:sequence>
+					<xsi:element name="IsUsed" type="xsi:boolean" default="false" nillable="false"/>
+				</xsi:sequence>
+			</xsi:extension>
+		</xsi:complexContent>
+	</xsi:complexType>
+	<xsi:complexType name="IsSensorIdRegisteredForDeviceResult">
+		<xsi:complexContent>
+			<xsi:extension base="ns1:OperationResult">
+				<xsi:sequence>
+					<xsi:element name="IsRegistered" type="xsi:boolean" default="false" nillable="false"/>
+				</xsi:sequence>
+			</xsi:extension>
+		</xsi:complexContent>
+	</xsi:complexType>
+	<xsi:complexType name="GetDevicesResult">
+		<xsi:complexContent>
+			<xsi:extension base="ns1:OperationResult">
+				<xsi:sequence>
+					<xsi:element name="Devices" type="ns1:DeviceList" nillable="true"/>
+				</xsi:sequence>
+			</xsi:extension>
+		</xsi:complexContent>
+	</xsi:complexType>
+	<xsi:complexType name="GetSensorsForDeviceResult">
+		<xsi:complexContent>
+			<xsi:extension base="ns1:OperationResult">
+				<xsi:sequence>
+					<xsi:element name="Sensors" type="ns1:SensorList" nillable="true"/>
+				</xsi:sequence>
+			</xsi:extension>
+		</xsi:complexContent>
+	</xsi:complexType>
+	<xsi:complexType name="GetSensorResult">
+		<xsi:complexContent>
+			<xsi:extension base="ns1:OperationResult">
+				<xsi:sequence>
+					<xsi:element name="Sensor" type="ns1:Sensor"/>
+				</xsi:sequence>
+			</xsi:extension>
+		</xsi:complexContent>
+	</xsi:complexType>
+	<xsi:complexType name="GetMultipleSensorDataResult">
+		<xsi:complexContent>
+			<xsi:extension base="ns1:OperationResult">
+				<xsi:sequence>
+					<xsi:element name="SensorDataList" type="ns1:MultipleSensorDataList" nillable="true"/>
+				</xsi:sequence>
+			</xsi:extension>
+		</xsi:complexContent>
+	</xsi:complexType>
+</xsi:schema>

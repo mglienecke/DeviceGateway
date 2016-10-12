@@ -1,0 +1,81 @@
+﻿<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="1.0" m:MaxDataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="ExperimentsModel" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityType Name="Devices">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.String" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="IpEndPoint" Type="Edm.String" />
+        <Property Name="LocationName" Type="Edm.String" />
+        <Property Name="Latitude" Type="Edm.Decimal" />
+        <Property Name="Longitude" Type="Edm.Decimal" />
+        <Property Name="Elevation" Type="Edm.Decimal" />
+        <NavigationProperty Name="Sensors" Relationship="ExperimentsModel.Devices_Sensors_Sensors_Device" ToRole="Sensors_Device" FromRole="Devices_Sensors" />
+      </EntityType>
+      <EntityType Name="Sensors">
+        <Key>
+          <PropertyRef Name="SensorId" />
+        </Key>
+        <Property Name="Id" Type="Edm.String" />
+        <Property Name="DeviceId" Type="Edm.String" />
+        <Property Name="SensorId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Description" Type="Edm.String" />
+        <Property Name="UnitSymbol" Type="Edm.String" />
+        <Property Name="SensorValueDataType" Type="Edm.Int32" Nullable="false" />
+        <Property Name="SensorDataRetrievalMode" Type="Edm.Int32" Nullable="false" />
+        <Property Name="ShallSensorDataBePersisted" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="PersistDirectlyAfterChange" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsVirtualSensor" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="SensorCategory" Type="Edm.String" />
+        <Property Name="SensorDataCalculationMode" Type="Edm.Int32" Nullable="false" />
+        <Property Name="VirtualSensorDefinitionType" Type="Edm.Int32" Nullable="false" />
+        <Property Name="VirtualSensorDefininition" Type="Edm.String" />
+        <Property Name="PullModeCommunicationType" Type="Edm.Int32" Nullable="false" />
+        <Property Name="PullModeDotNetType" Type="Edm.String" />
+        <Property Name="PullFrequencyInSec" Type="Edm.Int32" Nullable="false" />
+        <Property Name="DefaultValue" Type="Edm.String" />
+        <Property Name="IsSynchronousPushToActuator" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="IsActuator" Type="Edm.Boolean" Nullable="false" />
+        <Property Name="PushModeCommunicationType" Type="Edm.Int32" Nullable="false" />
+        <NavigationProperty Name="Device" Relationship="ExperimentsModel.Devices_Sensors_Sensors_Device" ToRole="Devices_Sensors" FromRole="Sensors_Device" />
+        <NavigationProperty Name="SensorData" Relationship="ExperimentsModel.Sensors_SensorData_SensorData_Sensor" ToRole="SensorData_Sensor" FromRole="Sensors_SensorData" />
+      </EntityType>
+      <EntityType Name="SensorData">
+        <Key>
+          <PropertyRef Name="Identity" />
+        </Key>
+        <Property Name="Identity" Type="Edm.Int32" Nullable="false" />
+        <Property Name="SensorId" Type="Edm.Int32" Nullable="false" />
+        <Property Name="TakenWhen" Type="Edm.DateTime" Nullable="false" />
+        <Property Name="Value" Type="Edm.String" />
+        <Property Name="CorrelationId" Type="Edm.String" />
+        <NavigationProperty Name="Sensor" Relationship="ExperimentsModel.Sensors_SensorData_SensorData_Sensor" ToRole="Sensors_SensorData" FromRole="SensorData_Sensor" />
+      </EntityType>
+      <Association Name="Devices_Sensors_Sensors_Device">
+        <End Type="ExperimentsModel.Sensors" Role="Sensors_Device" Multiplicity="*" />
+        <End Type="ExperimentsModel.Devices" Role="Devices_Sensors" Multiplicity="0..1" />
+      </Association>
+      <Association Name="Sensors_SensorData_SensorData_Sensor">
+        <End Type="ExperimentsModel.SensorData" Role="SensorData_Sensor" Multiplicity="*" />
+        <End Type="ExperimentsModel.Sensors" Role="Sensors_SensorData" Multiplicity="0..1" />
+      </Association>
+    </Schema>
+    <Schema Namespace="CentralServerService.OData" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <EntityContainer Name="Entities" m:IsDefaultEntityContainer="true">
+        <EntitySet Name="Devices" EntityType="ExperimentsModel.Devices" />
+        <EntitySet Name="Sensors" EntityType="ExperimentsModel.Sensors" />
+        <EntitySet Name="SensorData" EntityType="ExperimentsModel.SensorData" />
+        <AssociationSet Name="FK_DbSensor_DbDevice" Association="ExperimentsModel.Devices_Sensors_Sensors_Device">
+          <End Role="Devices_Sensors" EntitySet="Devices" />
+          <End Role="Sensors_Device" EntitySet="Sensors" />
+        </AssociationSet>
+        <AssociationSet Name="FK_DbSensorData_DbSensor" Association="ExperimentsModel.Sensors_SensorData_SensorData_Sensor">
+          <End Role="Sensors_SensorData" EntitySet="Sensors" />
+          <End Role="SensorData_Sensor" EntitySet="SensorData" />
+        </AssociationSet>
+      </EntityContainer>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
